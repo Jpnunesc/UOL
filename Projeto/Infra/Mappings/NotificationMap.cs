@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Newtonsoft.Json;
 
 
 namespace Infra.Mappings
@@ -22,9 +23,30 @@ namespace Infra.Mappings
                 .HasColumnName("Tipo")
                 .IsRequired();
 
-            builder.Property(t => t.Body)
-                   .HasColumnName("Corpo")
-                    .IsRequired();
+            builder.Property(t => t.Mensagem)
+                .HasColumnName("Mensagem")
+                .IsRequired();
+
+            builder.Property(t => t.EmailDestinatario)
+                .HasColumnName("EmailDestinatario");
+
+            builder.Property(t => t.EmailOrigem)
+                .HasColumnName("EmailOrigem");
+
+            builder.Property(t => t.NumDestinario)
+                .HasColumnName("NumDestinario");
+
+            builder.Property(t => t.Assunto)
+                .HasColumnName("Assunto")
+                .IsRequired();
+
+            builder.Property(t => t.Cliente)
+                .HasColumnName("Cliente")
+                .IsRequired();
+
+            builder.Property(t => t.NomeUsuario)
+                .HasColumnName("NomeUsuario")
+                .IsRequired();
         }
 
     }

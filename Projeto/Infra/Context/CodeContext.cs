@@ -13,14 +13,14 @@ namespace Infra.Context
       : base(options)
         {
         }
-        public DbSet<NotificationEntity> Notifications { get; set; }
+        public DbSet<ProductEntity> Products { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            new NotificationMap(modelBuilder.Entity<NotificationEntity>());
+            new ProductMap(modelBuilder.Entity<ProductEntity>());
         }
     }
 }

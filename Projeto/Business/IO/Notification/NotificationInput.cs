@@ -5,34 +5,31 @@ namespace Business.IO.Notification
 {
     public class NotificationInput
     {
-        public TypeNotificationEnum Tipo { get; set; }
+        public int? Id { get; set; }
+        public int Tipo { get; set; }
         public string Mensagem { get; set; }
         public string EmailDestinatario { get; set; }
-        public string EmaiOrigem { get; set; }
+        public string EmailOrigem { get; set; }
         public string NumDestinario { get; set; }
         public string Assunto { get; set; }
         public string Cliente { get; set; }
         public string NomeUsuario { get; set; }
 
-
-        //TODO: colocar um variavel "body" que converte tudo em json de acordo com o "tipo"
-        public ReturnView Validate()
+        public ReturnView Validate(NotificationInput notification)
         {
             ReturnView retorno = new ReturnView();
-            NotificationValidation validator = new NotificationValidation();
-            foreach (var el in list)
-            {
-                var valid = validator.Validate(value);
-                if (!valid.IsValid)
+                var validator = notification.Tipo == (int)TypeNotificationEnum.Email 
+                                                     ? new NotificationEmailValidation().Validate(notification) 
+                                                     : new NotificationSmsValidation().Validate(notification);
+                if (!validator.IsValid)
                 {
                     retorno.Status = false;
-                    foreach (var item in valid.Errors)
+                    foreach (var item in validator.Errors)
                     {
                         retorno.Message = string.IsNullOrEmpty(retorno.Message) ? item.ErrorMessage : retorno.Message + ", " + item.ErrorMessage;
                     }
                     return retorno;
                 }
-            }
             retorno.Status = true;
             return retorno;
         }

@@ -10,18 +10,33 @@ using System.Collections.Generic;
 using System.Configuration;
 using System;
 using System.IO;
+using Business.IO.Notification;
+using System.Threading.Tasks;
 
 namespace Test.Tests.service
 {
-    public class NotificationTest
+    public class ProdutoTest
     {
-        Mock<IMapper> mapper = new Mock<IMapper>();
-        Mock<INotificationRepository> mockRepository = new Moq.Mock<INotificationRepository>();
-        [Fact(DisplayName = "Salvar notificação")]
-        public async void CadastrarNotificacao_ComDadosCorretos_DeveRetornarCadastrado()
+        Mock<IMapper> mapper = new();
+        Mock<INotificationRepository> mockRepository = new();
+        [Fact(DisplayName = "Salvar Produto")]
+        public void RegisterProductWithCorrectDataMustReturnRegistered()
         {
-            NotificationService service = new NotificationService(mapper.Object, mockRepository.Object);
-            //Assert.True(result.Status);
+            
+            NotificationService service = new(mapper.Object, mockRepository.Object);
+            var body = new NotificationInput
+            {
+                Tipo = 1,
+                Mensagem = "teste",
+                EmailDestinatario = "teste",
+                EmailOrigem = "teste",
+                Assunto = "teste",
+                Cliente = "teste",
+                NomeUsuario = "teste"
+            };
+            mockRepository.Setup(s => s.Add(It.IsAny<NotificationEntity>())).Returns(Task.FromResult(new NotificationEntity()));
+            var result = service.Save(body);
+            Assert.True(result.Result.Status);
 
         }
     }

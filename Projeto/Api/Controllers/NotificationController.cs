@@ -37,7 +37,7 @@ namespace Api.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPut]
         public async Task<IActionResult> Put([FromBody] NotificationInput _notification)
         {
             try
@@ -50,7 +50,7 @@ namespace Api.Controllers
             }
         }
 
-        [HttpDelete("id")]
+        [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {
             try
@@ -63,7 +63,7 @@ namespace Api.Controllers
             }
         }
 
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
             try
@@ -87,19 +87,6 @@ namespace Api.Controllers
             {
                 return StatusCode(500, new ReturnView() { Object = null, Message = ex.Message, Status = false });
             }
-        }
-        [HttpGet]
-        public async Task<IActionResult> GetList()
-        {
-            try
-            {
-                return Ok(await _service.GetList());
-            }
-            catch (Exception ex)
-            {
-                 return StatusCode(500, new ReturnView() { Object = null, Message = ex.Message, Status = false });
-            }
-        }
-        
+        }       
     }
 }

@@ -1,0 +1,80 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="float-right">
+                        <button class="btn btn-secondary" [routerLink]="retunrUrl"> Voltar
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="form">
+                        <div class="row">
+                            <div class="col-sm-6 col-lg-6">
+                                <label class="form-label">Tipo de notificação</label>
+                                <select formControlName="tipo"
+                                    [class]="disabled ? 'form-control disabled' : 'form-control'">
+                                    <option value="">select</option>
+                                    <option *ngFor="let item of listTipos" value="{{item.id}}">
+                                        {{item.nome}}
+                                    </option>
+                                </select>
+                                <field-errors [control]="form.get('tipo')">
+                                </field-errors>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <label class="form-label">Assunto</label>
+                                <input type="text" formControlName="assunto"
+                                    [class]="routerId ? 'form-control disabled' : 'form-control'">
+                                <field-errors [control]="form.get('assunto')">
+                                </field-errors>
+                            </div>
+                            <div class="col-sm-6 col-lg-6" *ngIf="form.get('tipo').value == 1">
+                                <label class="form-label">E-mail Destinatario</label>
+                                <input type="text" formControlName="emailDestinatario"
+                                    [class]="disabled ? 'form-control disabled' : 'form-control'">
+                            </div>
+                            <div class="col-sm-6 col-lg-6" *ngIf="form.get('tipo').value == 1">
+                                <label class="form-label">E-mail Origem</label>
+                                <input type="text" formControlName="emailOrigem"
+                                    [class]="disabled ? 'form-control disabled' : 'form-control'">
+                            </div>
+                            <div class="col-sm-12 col-lg-12" *ngIf="form.get('tipo').value == 2">
+                                <label class="form-label">Número Destinatario</label>
+                                <input type="text" formControlName="numDestinario"
+                                    [class]="disabled ? 'form-control disabled' : 'form-control'">
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <label class="form-label">Cliente</label>
+                                <input type="text" formControlName="cliente"
+                                    [class]="disabled ? 'form-control disabled' : 'form-control'">
+                                <field-errors [control]="form.get('cliente')">
+                                </field-errors>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <label class="form-label">Nome Usuário</label>
+                                <input type="text" formControlName="nomeUsuario"
+                                    [class]="disabled ? 'form-control disabled' : 'form-control'">
+                                <field-errors [control]="form.get('nomeUsuario')">
+                                </field-errors>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Mensagem</label>
+                            <textarea formControlName="mensagem"
+                                [class]="disabled ? 'form-control disabled' : 'form-control'"
+                                aria-label="With textarea"></textarea>
+                            <field-errors [control]="form.get('mensagem')">
+                            </field-errors>
+                        </div>
+                        <button *ngIf="!disabled" type="submit" class="btn btn-primary" (click)="save()">Salvar</button>
+                    </form>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

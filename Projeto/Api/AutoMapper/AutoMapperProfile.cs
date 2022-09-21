@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using Business.IO.Notification;
+using Business.IO.Product;
 using Business.IO.Users;
-using System.Collections.Generic;
+using Domain.Entity;
+using Domain.Entitys;
 
 namespace Business.AutoMapper
 {
@@ -10,13 +12,20 @@ namespace Business.AutoMapper
         public AutoMapperProfile()
         {
             CreateMap<NotificationEntity, NotificationOutput>();
-            CreateMap<NotificationOutput, NotificationEntity>(MemberList.None);
+            CreateMap<NotificationOutput, NotificationEntity>();
 
-            CreateMap<NotificationInput,  NotificationEntity>(MemberList.None);
-            CreateMap<NotificationEntity, NotificationInput>(MemberList.None);
+            CreateMap<NotificationInput,  NotificationEntity>();
+            CreateMap<NotificationEntity, NotificationInput>();
 
-            CreateMap<UserAuthView, UserEntity>(MemberList.None);
-            CreateMap<UserEntity, UserAuthView>(MemberList.None);
+            CreateMap<ProductEntity, ProductInput>();
+            CreateMap<ProductInput, ProductEntity>();
+            CreateMap<ProductEntity, ProductOutPut>();
+            CreateMap<ProductOutPut, ProductEntity>();
+            CreateMap<ProductInput, ProductOutPut>();
+            CreateMap<ProductOutPut, ProductInput>();
+
+            CreateMap<UserAuthView, UserEntity>();
+            CreateMap<UserEntity, UserAuthView>();
 
 
         }

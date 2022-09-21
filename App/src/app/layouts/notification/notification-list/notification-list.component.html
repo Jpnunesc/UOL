@@ -1,0 +1,105 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="float-right">
+                        <button class="btn btn-primary" routerLink="../create"> Cadastrar
+                        </button>
+                    </div>
+                    <h5 class="title">List</h5>
+                    <form [formGroup]="formFilter">
+                        <div class="row">
+                            <div class="col-sm-8 col-lg-8">
+                                <label class="form-label">Tipo de notificação</label>
+                                <select formControlName="tipo"
+                                    class="form-control">
+                                    <option value="">select</option>
+                                    <option *ngFor="let item of listTipos" value="{{item.id}}">
+                                        {{item.nome}}
+                                    </option>
+                                </select>
+                            </div>
+                            <button type="button" class="btn btn-info" style="margin-top: 20px;"
+                                (click)="getNotification()">Pesquisar</button>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="card-body" *ngIf="data?.length">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                                <th>
+                                    Código
+                                </th>
+                                <th>
+                                    Tipo
+                                </th>
+                                <th>
+                                    Mensagem
+                                </th>
+                                <th>
+                                   Destinatario
+                                </th>
+                                <th>
+                                   Assunto
+                                </th>
+                                <th>
+                                    Cliente
+                                </th>
+                                <th></th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of data | paginate: {
+                                                                        itemsPerPage: formFilter.get('pageSize').value,
+                                                                        currentPage: formFilter.get('page').value,
+                                                                        totalItems: totalItems}">
+
+                                    <td>
+                                        {{item.id}}
+                                    </td>
+                                    <td>
+                                        {{item.tipo}}
+                                    </td>
+                                    <td>
+                                        {{item.mensagem}}
+                                    </td>
+                                    <td>
+                                        {{item.tipo == 1 ? item.emailDestinatario : item.numDestinario}}
+                                    </td>
+                                    <td>
+                                        {{item.assunto}}
+                                    </td>
+                                    <td>
+                                        {{item.cliente}}
+                                    </td>
+                                    <td>
+                                        {{item.nomeUsuario}}
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-cornflowerblue color-blue" routerLink="../edit/{{item.id}}"><i
+                                                class="now-ui-icons ui-1_settings-gear-63"></i> Edit</button>
+                                        <button class="btn btn-secondary margin" routerLink="../detail/{{item.id}}"><i
+                                                class="now-ui-icons ui-1_zoom-bold"></i> Detail</button>
+                                        <button type="button" class="btn btn-danger"
+                                            (click)="opemModal = true; idItemDelete = item.id"><i
+                                                class="now-ui-icons ui-1_simple-remove"></i> Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <pagination-controls 
+                        (pageChange)="formFilter.get('page').setValue($event); getStore()"  
+                        previousLabel="Anterior"
+                        nextLabel="Próximo"></pagination-controls>
+                    </div>
+                </div>
+                <label *ngIf="!data.length">no records...</label>
+            </div>
+        </div>
+    </div>
+</div>
+<app-modal [opem]="opemModal" (cancel)="opemModal = false" (confirm)="deleteItem()"></app-modal>

@@ -6128,11 +6128,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\projetos\\Estudos\\desafio-dev\\Projeto\\CrossCuttingIoC\\CrossCuttingIoC.csproj",
+      "projectUniqueName": "C:\\projetos\\OAB\\Projeto\\CrossCuttingIoC\\CrossCuttingIoC.csproj",
       "projectName": "CrossCuttingIoC",
-      "projectPath": "C:\\projetos\\Estudos\\desafio-dev\\Projeto\\CrossCuttingIoC\\CrossCuttingIoC.csproj",
+      "projectPath": "C:\\projetos\\OAB\\Projeto\\CrossCuttingIoC\\CrossCuttingIoC.csproj",
       "packagesPath": "C:\\Users\\jpcos\\.nuget\\packages\\",
-      "outputPath": "C:\\projetos\\Estudos\\desafio-dev\\Projeto\\CrossCuttingIoC\\obj\\",
+      "outputPath": "C:\\projetos\\OAB\\Projeto\\CrossCuttingIoC\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\jpcos\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6149,11 +6149,11 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\projetos\\Estudos\\desafio-dev\\Projeto\\Business\\Business.csproj": {
-              "projectPath": "C:\\projetos\\Estudos\\desafio-dev\\Projeto\\Business\\Business.csproj"
+            "C:\\projetos\\OAB\\Projeto\\Business\\Business.csproj": {
+              "projectPath": "C:\\projetos\\OAB\\Projeto\\Business\\Business.csproj"
             },
-            "C:\\projetos\\Estudos\\desafio-dev\\Projeto\\Infra\\Infra.csproj": {
-              "projectPath": "C:\\projetos\\Estudos\\desafio-dev\\Projeto\\Infra\\Infra.csproj"
+            "C:\\projetos\\OAB\\Projeto\\Infra\\Infra.csproj": {
+              "projectPath": "C:\\projetos\\OAB\\Projeto\\Infra\\Infra.csproj"
             }
           }
         }
@@ -6188,7 +6188,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
       }
     }
   }

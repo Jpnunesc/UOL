@@ -1,7 +1,7 @@
 ﻿namespace Business.IO.Notification
 {
-    public class NotificationFilter
+    public class NotificationFilter : FilterPag
     {
-        public int Type { get; set; }
+        public int Tipo { get; set; }
     }
 }

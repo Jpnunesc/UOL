@@ -4,9 +4,9 @@ namespace Business.Enums
 {
     public enum TypeNotificationEnum
     {
-        [Description("SMS")]
-        Sms = 1,
         [Description("EMAIL")]
-        Email = 2
+        Email = 1,
+        [Description("SMS")]
+        Sms = 2
     }
 }

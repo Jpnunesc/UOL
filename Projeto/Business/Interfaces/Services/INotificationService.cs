@@ -11,6 +11,5 @@ namespace Business.Interfaces.Services
         Task<ReturnView> Delete(int id);
         Task<ReturnView> GetById(int id);
         Task<ReturnView> GetByFilter(NotificationFilter filter);
-        Task<ReturnView> GetList();
     }
 }

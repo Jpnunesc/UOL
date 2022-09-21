@@ -1,16 +1,12 @@
-﻿using Business.Constante;
-using Business.Enums;
-using Business.Extensions;
+﻿using AutoMapper;
+using Business.Constante;
 using Business.Interfaces.Repositories;
 using Business.Interfaces.Services;
 using Business.IO;
 using Business.IO.Notification;
-using Business.Validations;
 using Domain.Entitys;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Business.Services
@@ -18,7 +14,7 @@ namespace Business.Services
     public class NotificationService : INotificationService
     {
         private readonly IMapper _mapper;
-        private readonly Messages _messages;
+        private readonly Messages _messages = new Messages();
         private readonly INotificationRepository _repository;
         public NotificationService(IMapper mapper, INotificationRepository repository)
         {
@@ -28,38 +24,48 @@ namespace Business.Services
 
         public async Task<ReturnView> Save(NotificationInput notification)
         {
-            var validate = NotificationInput.Validate();
+            try
+            {
+                var validate = notification.Validate(notification);
+                if (!validate.Status)
+                {
+                    return validate;
+                }
+                var registerEntity = _mapper.Map<NotificationInput, NotificationEntity>(notification);
+                return new ReturnView() { Object = _mapper.Map<NotificationEntity, NotificationOutput>(await _repository.Add(registerEntity)), Message = _messages.MessageSuccess, Status = true };
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        public async Task<ReturnView> Put(NotificationInput notification)
+        {
+            var validate = notification.Validate(notification);
             if (!validate.Status)
             {
                 return validate;
             }
             var registerEntity = _mapper.Map<NotificationInput, NotificationEntity>(notification);
-            return new ReturnView() { Object = _mapper.Map<NotificationEntity, NotificationOutput>(await _repository.Add(registerEntity)), Message = _messages.MessageSuccess, Status = true };
+            return new ReturnView() { Object = _mapper.Map<NotificationEntity, NotificationOutput>(await _repository.Update(registerEntity)), Message = _messages.MessageSuccess, Status = true };
         }
 
-        public Task<ReturnView> Put(NotificationInput notification)
+        public async Task<ReturnView> Delete(int id)
         {
-            throw new NotImplementedException();
+            await _repository.Remove(id);
+            return new ReturnView() { Message = _messages.MessageSuccess, Status = true };
         }
 
-        public Task<ReturnView> Delete(int id)
+        public async Task<ReturnView> GetById(int id)
         {
-            throw new NotImplementedException();
+            return new ReturnView() { Object = _mapper.Map<NotificationEntity, NotificationOutput>(await _repository.Get(x => x.Id == id)), Message = _messages.MessageSuccess, Status = true };
         }
 
-        public Task<ReturnView> GetById(int id)
+        public async Task<ReturnView> GetByFilter(NotificationFilter filter)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<ReturnView> GetByFilter(NotificationFilter filter)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<ReturnView> GetList()
-        {
-            throw new NotImplementedException();
+            return new ReturnView() { Object = await _repository.GetFilter(filter), Message = _messages.MessageSuccess, Status = true };
         }
         public void Dispose()
         {

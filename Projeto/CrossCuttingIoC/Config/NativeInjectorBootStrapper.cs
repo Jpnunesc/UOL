@@ -17,6 +17,10 @@ namespace CrossCutting.IoC.Config
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<INotificationService, NotificationService>();
             services.AddScoped<INotificationRepository, NotificationRepository>();
+
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+
             services.AddScoped<ITokenService, TokenService>();
 
 

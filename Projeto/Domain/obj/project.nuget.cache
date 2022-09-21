@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "73rs16gx/ZrALYyP1FNZ79Kz6nRf/NPLZCIFYCo1sV7USYGXHgH4HFXFbzMphF9PGy6Xkt+/D9suAXQIM6Rhdg==",
+  "dgSpecHash": "WMCRFB7deN4eau9rgOt2EgakLb7+7g0jIBJCUjqJ1x4zY9jk5R5mEn0wo3g7JlgPcMUFP4WnAM8dWc0rlbXb8A==",
   "success": true,
-  "projectFilePath": "C:\\Projetos\\estudos\\desafio-dev\\Projeto\\Domain\\Domain.csproj",
+  "projectFilePath": "C:\\projetos\\OAB\\Projeto\\Domain\\Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

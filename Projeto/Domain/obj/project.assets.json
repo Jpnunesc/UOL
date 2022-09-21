@@ -8,19 +8,19 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\joao.costa\\.nuget\\packages\\": {}
+    "C:\\Users\\jpcos\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projetos\\estudos\\desafio-dev\\Projeto\\Domain\\Domain.csproj",
+      "projectUniqueName": "C:\\projetos\\OAB\\Projeto\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "C:\\Projetos\\estudos\\desafio-dev\\Projeto\\Domain\\Domain.csproj",
-      "packagesPath": "C:\\Users\\joao.costa\\.nuget\\packages\\",
-      "outputPath": "C:\\Projetos\\estudos\\desafio-dev\\Projeto\\Domain\\obj\\",
+      "projectPath": "C:\\projetos\\OAB\\Projeto\\Domain\\Domain.csproj",
+      "packagesPath": "C:\\Users\\jpcos\\.nuget\\packages\\",
+      "outputPath": "C:\\projetos\\OAB\\Projeto\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\joao.costa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jpcos\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -28,9 +28,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://code.ifoodcorp.com.br/api/v4/projects/9297/packages/nuget/index.json": {},
-        "https://packagesource": {},
-        "https://pkgs.dev.azure.com/superainovacoes/sitemercado/_packaging/sm-nuget/nuget/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
@@ -62,7 +60,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
       }
     }
   }

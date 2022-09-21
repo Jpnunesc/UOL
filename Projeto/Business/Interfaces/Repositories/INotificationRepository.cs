@@ -7,6 +7,6 @@ namespace Business.Interfaces.Repositories
 {
     public interface INotificationRepository : IRepositoryBase<NotificationEntity>
     {
-        Task<IEnumerable<NotificationEntity>> GetFilter(NotificationFilter filter);
+        Task<NotificationOutPutPag> GetFilter(NotificationFilter filter);
     }
 }
