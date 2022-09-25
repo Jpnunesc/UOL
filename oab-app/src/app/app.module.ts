@@ -14,10 +14,17 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { CommonModule, registerLocaleData } from '@angular/common';
-import { LayoutModule } from './layouts/layout.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptor } from './components/auth/auth.interceptor';
 import { AppRoutingModule } from './app-routing.module';
+import { LayoutModule } from './layouts/layout.module';
+import { ToastrModule } from 'ngx-toastr';
+
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ModalModule } from 'ngx-bootstrap/modal';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 registerLocaleData(localePt, 'pt');
@@ -33,6 +40,12 @@ registerLocaleData(localePt, 'pt');
     LayoutModule,
     ReactiveFormsModule,
     FormsModule,
+    ToastrModule.forRoot(),
+    BrowserModule,
+    BsDropdownModule.forRoot(),
+    TooltipModule.forRoot(),
+    ModalModule.forRoot(),
+    NgbModule,
   ],
     declarations: [AppComponent],
   providers: [
@@ -40,7 +53,6 @@ registerLocaleData(localePt, 'pt');
     { provide: LOCALE_ID, useValue: 'pt' },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
-
     bootstrap: [AppComponent]
 })
 export class AppModule { }

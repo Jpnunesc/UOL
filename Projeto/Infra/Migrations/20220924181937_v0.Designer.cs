@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infra.Migrations
 {
     [DbContext(typeof(CodeContext))]
-    [Migration("20220920211342_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20220924181937_v0")]
+    partial class v0
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -49,13 +49,19 @@ namespace Infra.Migrations
                         .HasColumnType("nvarchar(100)")
                         .HasColumnName("Name");
 
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)")
+                        .HasColumnName("Price");
+
                     b.Property<string>("Sku")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("Sku");
 
-                    b.Property<bool>("Status")
-                        .HasColumnType("bit");
+                    b.Property<int>("Status")
+                        .HasMaxLength(1)
+                        .HasColumnType("int")
+                        .HasColumnName("Status");
 
                     b.HasKey("Id");
 

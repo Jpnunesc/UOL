@@ -6,5 +6,7 @@ import { ProductListComponent } from './product/product-list/product-list.compon
 
 export const LayoutRoutes: Routes = [
     { path: 'product/list', canActivate: [AuthGuard], component: ProductListComponent },
-    { path: 'product/create', canActivate: [AuthGuard], component: ProductFormComponent }
+    { path: 'product/create', canActivate: [AuthGuard], data: {detail:false}, component: ProductFormComponent },
+    { path: 'product/detail/:id', canActivate: [AuthGuard], data: {detail:true}, component: ProductFormComponent },
+    { path: 'product/edit/:id', canActivate: [AuthGuard], data: {detail:false}, component: ProductFormComponent }
 ];

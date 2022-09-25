@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 export class StandardService<T> {
 
     constructor(protected http: HttpClient,
-        protected url,
+        protected url: any,
         protected serviceCore?: boolean) { }
 
     httpPost(registro: T, action?: string): Observable<T> {

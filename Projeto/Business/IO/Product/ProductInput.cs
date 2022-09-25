@@ -5,13 +5,17 @@ namespace Business.IO.Product
 {
    public class ProductInput
     {
-        public string Sku { get; private set; }
-        public string Name { get; private set; }
-        public bool Status { get; set; }
-        public DateTime? DateRegister { get; private set; }
-        public string Description { get; private set; }
+        public int? Id { get; set; }
+        public string Sku { get; set; }
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+        public int Status { get; set; }
+        public DateTime? DateRegister { get; set; }
+        public string Description { get; set; }
         [Column(TypeName = "CLOB")]
-        public string Image { get; private set; }
+        public string Image { get; set; }
+
+
 
     }
 }

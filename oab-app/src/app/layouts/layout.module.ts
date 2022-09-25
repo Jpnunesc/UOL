@@ -9,6 +9,11 @@ import { ModalComponent } from '../components/modal/modal.component';
 import { FieldErrorsComponent } from '../components/field-errors/field-errors.component';
 import { UserComponent } from './user/user.component';
 import { LoginComponent } from './user/login/login.component';
+import { NavbarComponent } from '../components/navbar/navbar.component';
+import { LayoutBaseComponent } from './layout-base/layout-base.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 
 
 
@@ -16,7 +21,10 @@ import { LoginComponent } from './user/login/login.component';
   imports: [
     CommonModule,
     RouterModule.forChild(LayoutRoutes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule,
+    FormsModule,
+    ModalModule.forRoot()
   ],
   declarations: [
     ProductFormComponent,
@@ -24,11 +32,15 @@ import { LoginComponent } from './user/login/login.component';
     ModalComponent,
     FieldErrorsComponent,
     UserComponent,
-    LoginComponent
+    LoginComponent,
+    NavbarComponent,
+    LayoutBaseComponent,
+
   ],
   exports: [
     ModalComponent,
-    FieldErrorsComponent
+    FieldErrorsComponent,
+    NavbarComponent
   ]
   
 })

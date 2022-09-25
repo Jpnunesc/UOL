@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
           this.loadingService.stop();
           if (data.success) {
             this.toastr.success(data.message);
-            this.router.navigate([this.returnUrl]);
+            this.router.navigate(['/product']);
           } else {
             this.toastr.error(data.message);
           }

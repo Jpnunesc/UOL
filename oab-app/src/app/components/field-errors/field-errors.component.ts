@@ -8,11 +8,11 @@ import { AbstractControlDirective, AbstractControl, FormGroupDirective } from '@
 })
 export class FieldErrorsComponent {
 
-static readonly errorMessages = {
+static readonly errorMessages: any = {
     'required': () => 'Campo obrigatório',
     'minlength': (params: any) => 'The minimum number of characters is' + params.requiredLength,
     'maxlength': (params: any) => 'The maximum allowed number of characters is ' + params.requiredLength,
-    'pattern': (params: any) => 'Campo obrigatório',
+    'pattern': () => 'Campo obrigatório',
     'min': (params: any) => 'The minimum value is' + params?.min.toString().replace('.',','),
     'email': (params: { requiredLength: string; }) => 'Email inválido'
   };
@@ -48,7 +48,7 @@ static readonly errorMessages = {
       .map(field => this.getMessage(field, this.control.errors[field]));
     }
   }
-  getMessage(type: string, params: any) {
-       return ''; //FieldErrorsComponent.errorMessages[type](params);
+  getMessage(type: string, params: string) {
+       return FieldErrorsComponent.errorMessages[type](params);
   }
 }

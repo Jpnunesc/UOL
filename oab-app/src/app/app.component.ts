@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { AfterContentChecked, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { interval, Subscription } from 'rxjs';
 import { LoadingService } from './components/service/loading.service';
 
 @Component({
@@ -7,14 +7,21 @@ import { LoadingService } from './components/service/loading.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy, AfterContentChecked {
   subscription: Subscription[] = [];
-  isloading = false;
-  constructor(public loader: LoadingService) {}
+  isloading: boolean = false;
+  constructor(public loader: LoadingService, private changeDedectionRef: ChangeDetectorRef) {}
 
   ngOnInit() {
-    this.subscription.push(this.loader.changes().subscribe((data) => {
-        this.isloading = data.value;
-    }));
+     this.subscription.push(this.loader.changes().subscribe((data) => {
+         this.isloading = data.value;
+     }));
   }
+  ngAfterContentChecked(): void {
+    this.changeDedectionRef.detectChanges();
+}
+
+ngOnDestroy() {
+  this.subscription[0].unsubscribe();
+}
 }

@@ -30,7 +30,6 @@ namespace Business.Services
 
             var productMap = _mapper.Map<ProductInput, ProductEntity>(_product);
             productMap.DateRegister = DateTime.Now;
-            productMap.Status = true;
             try
             {
                 var objReturn = _mapper.Map<ProductEntity, ProductOutPut>(await _repository.Add(productMap));

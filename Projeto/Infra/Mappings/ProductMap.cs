@@ -21,12 +21,21 @@ namespace Infra.Mappings
                  .HasMaxLength(100)
                 .IsRequired();
 
+            builder.Property(t => t.Status)
+                .HasColumnName("Status")
+                 .HasMaxLength(1)
+                .IsRequired();
+
             builder.Property(t => t.Sku)
                    .HasColumnName("Sku")
                    .IsRequired();
 
             builder.Property(t => t.DateRegister)
                    .HasColumnName("DateRegister")
+                   .IsRequired();
+
+            builder.Property(t => t.Price)
+                   .HasColumnName("Price")
                    .IsRequired();
 
             builder.Property(t => t.Description)
@@ -37,15 +46,6 @@ namespace Infra.Mappings
                    .HasColumnName("Image")
                    .HasColumnType("varchar(MAX)")
                    .IsRequired();
-
-            //builder.Property(t => t.IdDepartament)
-            //       .HasColumnName("IdDepartament")
-            //       .IsRequired();
-
-            //builder.HasOne(x => x.Department)
-            //       .WithOne()
-            //       .HasForeignKey<ProductEntity>(x => x.IdDepartament);
-
         }
 
     }

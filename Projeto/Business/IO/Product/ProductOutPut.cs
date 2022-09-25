@@ -10,7 +10,8 @@ namespace Business.IO.Product
         public DateTime? DateRegister { get; private set; }
         public string Description { get; private set; }
         public string Image { get; private set; }
-        public bool Status { get; set; }
+        public decimal Price { get; set; }
+        public int Status { get; set; }
 
         public ReturnView Success()
         {

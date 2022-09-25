@@ -1,8 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { debounceTime } from 'rxjs/operators';
-import { environment } from '../../environments/environment';
-import { StandardService } from '../service/Standart.service';
+import { StandardService } from 'src/app/components/service/Standart.service';
+import { environment } from 'src/environments/environment';
+
 
 const url = `${environment.URL}/user`;
 
@@ -11,7 +12,7 @@ const url = `${environment.URL}/user`;
 })
 export class UserService extends StandardService<any>  {
   constructor(
-    protected http: HttpClient) {
+    http: HttpClient) {
     super(http, url, true)
   }
 }

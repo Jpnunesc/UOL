@@ -16,9 +16,7 @@ namespace Business.Services
         }
         public async Task<UserAuthView> Get(string username, string password)
         {
-            return await Task.Run(() => new UserAuthView { Nome = "sup", Senha = "sup", Role = "manager" });
-            //return await _repository.Get(username, password);
-
+            return await _repository.Get(username, password);
         }
 
     }

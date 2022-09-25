@@ -18,9 +18,11 @@ namespace Infra.Repositories
 
         public async Task<UserAuthView> Get(string username, string password)
         {
-            //var query =  DbSet as IQueryable<UserEntity>;
-            //return await query.Where(x => x.Nome.ToLower() == username.ToLower() && x.Senha == password).FirstOrDefaultAsync();
-            return await Task.Run(() => new UserAuthView { Nome = "sup", Senha = "sup", Role = "manager" });
+            if(username == "sup" && password == "sup")
+            {
+                return await Task.Run(() => new UserAuthView { Nome = "sup", Senha = "sup", Role = "manager" });
+            }
+            return null;
 
         }
     }
